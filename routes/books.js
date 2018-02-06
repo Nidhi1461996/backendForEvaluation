@@ -1,7 +1,15 @@
 const request = require('request-promise');
+const models = require('../models');
 
 
-const getRatings = function getRatings(booksInput) {
+const addBooksToDatabase = books => new Promise(() => {
+  models.books.bulkCreate(books);
+}).then(() => {
+  console.log('added data to database');
+});
+
+
+const getRatings = function getRatings(booksInput, res) {
   return new Promise((resolve) => {
     const books = booksInput.map(book => ({
       bookId: book.id,
@@ -23,7 +31,7 @@ const getRatings = function getRatings(booksInput) {
       }
     }).then(() => {
       // console.log(books);
-      // resolve(books);
+      resolve(books);
       const groupedBooks = books.reduce((acc, book) => {
         if (acc[book.author] === undefined) {
           acc[book.author] = [];
@@ -31,7 +39,8 @@ const getRatings = function getRatings(booksInput) {
         acc[book.author].push(book);
         return acc;
       }, {});
-      resolve(groupedBooks);
+      // resolve(groupedBooks);
+      res(groupedBooks);
     });
   });
 };
@@ -45,10 +54,9 @@ module.exports = {
       request({
         url: 'https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/allBooks',
         method: 'GET',
-      }).then((books) => {
-        getRatings(JSON.parse(books).books).then((b) => {
-          res(b);
-        });
+      }).then(books => getRatings(JSON.parse(books).books, res)).then((books) => {
+        console.log(books);
+        addBooksToDatabase(books);
       });
     },
   },
