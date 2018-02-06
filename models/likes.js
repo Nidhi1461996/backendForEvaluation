@@ -1,10 +1,7 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const books = sequelize.define('books', {
-
-    author: DataTypes.STRING,
-    name: DataTypes.STRING,
-    rating: DataTypes.FLOAT,
+  const likes = sequelize.define('likes', {
+    like: DataTypes.BOOLEAN,
   }, {
     classMethods: {
       associate(models) {
@@ -12,5 +9,5 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
-  return books;
+  return likes;
 };

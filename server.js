@@ -16,6 +16,7 @@ if (!module.parent) {
       throw (error);
     }
     console.log('Server started at port 8085');
+    console.log(Routes);
   });
 }
 

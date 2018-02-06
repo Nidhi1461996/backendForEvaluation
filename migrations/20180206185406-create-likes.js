@@ -1,20 +1,15 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('books', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('likes', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    author: {
-      type: Sequelize.STRING,
-    },
-    name: {
-      type: Sequelize.STRING,
-    },
-    rating: {
-      type: Sequelize.FLOAT,
+
+    like: {
+      type: Sequelize.BOOLEAN,
     },
     createdAt: {
       allowNull: false,
@@ -25,5 +20,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('books'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('likes'),
 };
