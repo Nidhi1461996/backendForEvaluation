@@ -52,9 +52,17 @@ describe('test the server', () => {
   });
 
 
-  test('checking the  result for 2nd question', (done) => {
+  test('checking the  result for 2nd question when the id exists', (done) => {
     Server.inject('/books/like/8', (response) => {
       expect(response.result).toBe('liked');
+      done();
+    });
+  });
+
+
+  test('checking the  result for 2nd question when the id does not exists', (done) => {
+    Server.inject('/books/like/800', (response) => {
+      expect(response.result).toBe('Could not find book with id: 800.');
       done();
     });
   });
