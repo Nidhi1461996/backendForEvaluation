@@ -52,7 +52,7 @@ describe('test the server', () => {
   });
 
 
-  test('checking the  result for 2nd question when the id exists', (done) => {
+  test('checking the  result for 3rd question when the id exists-like', (done) => {
     Server.inject('/books/like/8', (response) => {
       expect(response.result).toBe('liked');
       done();
@@ -60,9 +60,24 @@ describe('test the server', () => {
   });
 
 
-  test('checking the  result for 2nd question when the id does not exists', (done) => {
+  test('checking the  result for 3rd question when the id does not exists-like', (done) => {
     Server.inject('/books/like/800', (response) => {
       expect(response.result).toBe('Could not find book with id: 800.');
+      done();
+    });
+  });
+
+
+  test('checking the  result for 3rd question when the id does not exists-unlike', (done) => {
+    Server.inject('/books/like/800', (response) => {
+      expect(response.result).toBe('Could not find book with id: 800.');
+      done();
+    });
+  });
+
+  test('checking the  result for 3rd question when the id exists-unlike', (done) => {
+    Server.inject('/books/unlike/8', (response) => {
+      expect(response.result).toBe('Unliked');
       done();
     });
   });

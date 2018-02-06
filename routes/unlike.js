@@ -3,7 +3,7 @@ const model = require('../models');
 module.exports =
   {
     route: [{
-      path: '/books/like/{bookId}',
+      path: '/books/unlike/{bookId}',
       method: 'GET',
       handler: (request, response) => {
         const ids = request.params.bookId;
@@ -28,10 +28,10 @@ module.exports =
             throw new Error(`Could not find book with id: ${ids}.`);
           }
           like.updateAttributes({
-            like: true,
+            like: null,
           });
         }).then(() => {
-          response('liked');
+          response('Unliked');
         });
       },
     },
