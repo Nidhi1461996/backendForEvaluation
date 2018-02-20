@@ -28,7 +28,7 @@ module.exports =
             throw new Error(`Could not find book with id: ${ids}.`);
           }
           like.updateAttributes({
-            like: null,
+            like: false,
           });
         }).then(() => {
           response('Unliked');
