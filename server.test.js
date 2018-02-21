@@ -20,30 +20,30 @@ describe('test the server', () => {
     Server.inject('/books', (response) => {
       const result = {
         'J K Rowling': [{
-          id: 1, bookId: 1, author: 'J K Rowling', name: 'Harry Potter and the Sorcerers Stone (Harry Potter, #1)', rating: 4.45,
+          id: 10, bookId: 10, author: 'J K Rowling', name: 'Harry Potter and the Sorcerers Stone (Harry Potter, #1)', rating: 4.45,
         }, {
-          id: 2, bookId: 2, author: 'J K Rowling', name: 'Harry Potter and the Chamber of Secrets (Harry Potter, #2)', rating: 4.38,
+          id: 20, bookId: 20, author: 'J K Rowling', name: 'Harry Potter and the Chamber of Secrets (Harry Potter, #2)', rating: 4.38,
         }, {
-          id: 3, bookId: 3, author: 'J K Rowling', name: 'Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)', rating: 4.54,
+          id: 30, bookId: 30, author: 'J K Rowling', name: 'Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)', rating: 4.54,
         }, {
-          id: 4, bookId: 4, author: 'J K Rowling', name: 'Harry Potter and the Goblet of Fire (Harry Potter, #4)', rating: 4.53,
+          id: 40, bookId: 40, author: 'J K Rowling', name: 'Harry Potter and the Goblet of Fire (Harry Potter, #4)', rating: 4.53,
         }, {
-          id: 5, bookId: 5, author: 'J K Rowling', name: 'Harry Potter and the Order of the Phoenix (Harry Potter, #5)', rating: 4.47,
+          id: 50, bookId: 50, author: 'J K Rowling', name: 'Harry Potter and the Order of the Phoenix (Harry Potter, #5)', rating: 4.47,
         }, {
-          id: 6, bookId: 6, author: 'J K Rowling', name: 'Harry Potter and the Half-Blood Prince (Harry Potter, #6)', rating: 4.54,
+          id: 60, bookId: 60, author: 'J K Rowling', name: 'Harry Potter and the Half-Blood Prince (Harry Potter, #6)', rating: 4.54,
         }, {
-          id: 7, bookId: 7, author: 'J K Rowling', name: 'Harry Potter and the Deathly Hallows (Harry Potter, #7)', rating: 4.62,
+          id: 70, bookId: 70, author: 'J K Rowling', name: 'Harry Potter and the Deathly Hallows (Harry Potter, #7)', rating: 4.62,
         }],
         'Sidney Sheldon': [{
-          id: 8, bookId: 8, author: 'Sidney Sheldon', name: 'If Tomorrow Comes (Tracy Whitney Series, #1)', rating: 4.02,
+          id: 80, bookId: 80, author: 'Sidney Sheldon', name: 'If Tomorrow Comes (Tracy Whitney Series, #1)', rating: 4.02,
         }, {
-          id: 10, bookId: 10, author: 'Sidney Sheldon', name: 'Tell Me Your Dreams', rating: 3.93,
+          id: 100, bookId: 100, author: 'Sidney Sheldon', name: 'Tell Me Your Dreams', rating: 3.93,
         }, {
-          id: 9, bookId: 9, author: 'Sidney Sheldon', name: 'Master of the Game', rating: 4.1,
+          id: 90, bookId: 90, author: 'Sidney Sheldon', name: 'Master of the Game', rating: 4.1,
         }, {
-          id: 11, bookId: 11, author: 'Sidney Sheldon', name: 'The Other Side of Midnight (Midnight #1)', rating: 3.9,
+          id: 110, bookId: 110, author: 'Sidney Sheldon', name: 'The Other Side of Midnight (Midnight #1)', rating: 3.9,
         }, {
-          id: 12, bookId: 12, author: 'Sidney Sheldon', name: 'Rage of Angels', rating: 3.92,
+          id: 120, bookId: 120, author: 'Sidney Sheldon', name: 'Rage of Angels', rating: 3.92,
         }],
       };
       expect(response.result).toEqual(result);
@@ -53,7 +53,7 @@ describe('test the server', () => {
 
 
   test('checking the  result for 3rd question when the id exists-like', (done) => {
-    Server.inject('/books/like/8', (response) => {
+    Server.inject('/books/like/80', (response) => {
       expect(response.result).toBe('liked');
       done();
     });
@@ -76,8 +76,41 @@ describe('test the server', () => {
   });
 
   test('checking the  result for 3rd question when the id exists-unlike', (done) => {
-    Server.inject('/books/unlike/8', (response) => {
+    Server.inject('/books/unlike/80', (response) => {
       expect(response.result).toBe('Unliked');
+      done();
+    });
+  });
+  const books = {
+    books: [{
+      id: 10, author: 'J K Rowling', name: 'Harry Potter and the Sorcerers Stone (Harry Potter, #1)', rating: 4.45,
+    }, {
+      id: 20, author: 'J K Rowling', name: 'Harry Potter and the Chamber of Secrets (Harry Potter, #2)', rating: 4.38,
+    }, {
+      id: 80, author: 'Sidney Sheldon', name: 'If Tomorrow Comes (Tracy Whitney Series, #1)', rating: 4.02,
+    }, {
+      id: 100, author: 'Sidney Sheldon', name: 'Tell Me Your Dreams', rating: 3.93,
+    }, {
+      id: 30, author: 'J K Rowling', name: 'Harry Potter and the Prisoner of Azkaban (Harry Potter, #3)', rating: 4.54,
+    }, {
+      id: 40, author: 'J K Rowling', name: 'Harry Potter and the Goblet of Fire (Harry Potter, #4)', rating: 4.53,
+    }, {
+      id: 90, author: 'Sidney Sheldon', name: 'Master of the Game', rating: 4.1,
+    }, {
+      id: 110, author: 'Sidney Sheldon', name: 'The Other Side of Midnight (Midnight #1)', rating: 3.9,
+    }, {
+      id: 50, author: 'J K Rowling', name: 'Harry Potter and the Order of the Phoenix (Harry Potter, #5)', rating: 4.47,
+    }, {
+      id: 60, author: 'J K Rowling', name: 'Harry Potter and the Half-Blood Prince (Harry Potter, #6)', rating: 4.54,
+    }, {
+      id: 70, author: 'J K Rowling', name: 'Harry Potter and the Deathly Hallows (Harry Potter, #7)', rating: 4.62,
+    }, {
+      id: 120, author: 'Sidney Sheldon', name: 'Rage of Angels', rating: 3.92,
+    }],
+  };
+  test('checking third api', (done) => {
+    Server.inject('/books/all', (response) => {
+      expect(response.result).toBe(books);
       done();
     });
   });

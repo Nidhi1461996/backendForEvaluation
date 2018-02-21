@@ -18,5 +18,4 @@ if (!module.parent) {
     console.log('Server started at port 8085');
   });
 }
-
 module.exports = server;
