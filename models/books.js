@@ -1,7 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
   const books = sequelize.define('books', {
-
     author: DataTypes.STRING,
     name: DataTypes.STRING,
     rating: DataTypes.FLOAT,

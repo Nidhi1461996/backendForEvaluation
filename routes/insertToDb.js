@@ -11,7 +11,7 @@ module.exports = {
         url: 'https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/allBooks',
         method: 'GET',
       }).then(books => booksAndRatings(JSON.parse(books).books)).then((books) => {
-        console.log(books);
+        // console.log(books);
         insertBooksToDatabase(books);
         res(books);
       });
